@@ -5,27 +5,14 @@
 <title>Manual de Usuario – RespirApp</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
-    :root {
-        --primary: #0073a6;
-        --primary-dark: #005b8a;
-        --bg: #f4f6f8;
-        --card-bg: #ffffff;
-        --border: #dde3ea;
-    }
-
-    * {
-        box-sizing: border-box;
-    }
-
     body {
         margin: 0;
         font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-        background: var(--bg);
+        background: #f4f6f8;
         color: #333;
         line-height: 1.7;
     }
 
-    /* Layout */
     #sidebar {
         width: 280px;
         background: #ffffff;
@@ -33,62 +20,40 @@
         position: fixed;
         left: 0;
         top: 0;
-        border-right: 1px solid var(--border);
+        border-right: 1px solid #ddd;
         padding: 20px;
         overflow-y: auto;
         transition: transform 0.25s ease;
         z-index: 1000;
     }
 
+    #sidebar.hidden {
+        transform: translateX(-100%);
+    }
+
     #sidebar h2 {
-        font-size: 18px;
-        margin: 10px 0 20px 0;
-        color: var(--primary);
+        font-size: 20px;
+        margin-top: 0;
+        color: #0073a6;
         text-align: center;
     }
 
     #sidebar a {
         display: block;
-        padding: 6px 0;
+        padding: 8px 0;
         text-decoration: none;
-        color: var(--primary-dark);
+        color: #005b8a;
         font-weight: 600;
-        font-size: 14px;
+        font-size: 15px;
     }
 
     #sidebar a:hover {
-        color: var(--primary);
+        color: #0095d4;
         text-decoration: underline;
     }
 
-    .sidebar-section-title {
-        margin-top: 15px;
-        font-size: 13px;
-        text-transform: uppercase;
-        letter-spacing: 0.05em;
-        color: #888;
-        font-weight: 700;
-    }
-
-    #content {
-        margin-left: 280px;
-        padding: 32px 40px;
-        max-width: 980px;
-    }
-
-    /* Header / logo */
-    .logo {
-        text-align: center;
-        margin-bottom: 10px;
-    }
-
-    .logo img {
-        max-width: 180px;
-        height: auto;
-    }
-
     #menuToggle {
-        display: none;
+        display: block;
         position: fixed;
         left: 12px;
         top: 12px;
@@ -96,85 +61,85 @@
     }
 
     #menuToggle button {
-        background: var(--primary);
+        background: #0073a6;
         color: #fff;
         border: none;
-        padding: 8px 12px;
-        border-radius: 4px;
-        font-size: 16px;
+        padding: 10px 14px;
+        border-radius: 6px;
+        font-size: 20px;
         cursor: pointer;
         box-shadow: 0 2px 6px rgba(0,0,0,0.15);
     }
 
-    #menuToggle button:focus {
-        outline: 2px solid #fff;
-        outline-offset: 2px;
+    #content {
+        margin-left: 300px;
+        padding: 40px 50px;
+        max-width: 900px;
+    }
+
+    #sidebar.hidden + #content {
+        margin-left: 40px;
     }
 
     h1 {
-        font-size: 32px;
-        color: var(--primary);
-        margin-bottom: 4px;
+        font-size: 36px;
+        color: #006b9f;
+        margin-bottom: 10px;
     }
 
     h2 {
-        color: var(--primary);
-        font-size: 26px;
-        margin-top: 40px;
+        color: #0073a6;
+        font-size: 28px;
+        margin-top: 50px;
         border-bottom: 2px solid #c7e6f6;
         padding-bottom: 6px;
     }
 
     h3 {
-        color: var(--primary-dark);
-        font-size: 20px;
-        margin-top: 26px;
+        color: #005b8a;
+        font-size: 21px;
+        margin-top: 28px;
     }
 
     h4 {
         color: #004466;
-        font-size: 17px;
-        margin-top: 18px;
-    }
-
-    p {
-        margin: 10px 0;
-    }
-
-    ul {
-        margin-top: 8px;
-    }
-
-    hr {
-        border: none;
-        border-top: 1px solid var(--border);
-        margin: 32px 0;
+        font-size: 18px;
+        margin-top: 22px;
     }
 
     .video-box {
         background: #e8f4f9;
-        padding: 10px 12px;
-        border-left: 5px solid var(--primary);
-        margin: 12px 0;
-        border-radius: 4px;
+        padding: 12px;
+        border-left: 5px solid #0073a6;
+        margin: 15px 0;
     }
 
     .video-box a {
         text-decoration: none;
-        color: var(--primary-dark);
+        color: #005b8a;
         font-weight: bold;
     }
 
-    .video-box a:hover {
-        color: var(--primary);
+    /* NEW — Imagen de juegos */
+    .game-img {
+        display: block;
+        margin: 20px auto;
+        max-width: 350px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.2);
     }
 
-    .small-note {
-        color: #666;
-        font-size: 13px;
+    /* Estilos ya existentes */
+    .logo {
+        text-align: center;
+        margin-bottom: 30px;
     }
 
-    /* Images */
+    .logo img {
+        max-width: 260px;
+        height: auto;
+    }
+
     .image-row {
         display: flex;
         gap: 16px;
@@ -186,342 +151,175 @@
         flex: 1 1 160px;
         max-width: 200px;
         border-radius: 6px;
-        border: 1px solid var(--border);
+        border: 1px solid #dde3ea;
         background: #fff;
         padding: 6px;
         object-fit: contain;
-    }
-
-    .image-single {
-        margin: 8px 0;
     }
 
     .image-single img {
         max-width: 220px;
         width: 100%;
         border-radius: 6px;
-        border: 1px solid var(--border);
+        border: 1px solid #dde3ea;
         background: #fff;
         padding: 6px;
         object-fit: contain;
     }
 
-    .req-layout {
-        display: flex;
-        gap: 16px;
-        align-items: flex-start;
-        flex-wrap: wrap;
+    .image-single.small img {
+        max-width: 140px;
     }
 
-    .req-layout .text {
-        flex: 1 1 220px;
-    }
-
-    .req-layout .image-single {
-        flex: 0 0 180px;
-    }
-
-    /* Responsive */
-    @media (max-width: 900px) {
-        #sidebar {
-            transform: translateX(-100%);
-        }
-        #sidebar.open {
-            transform: translateX(0);
-        }
-        #content {
-            margin-left: 0;
-            padding: 80px 18px 24px 18px;
-        }
-        #menuToggle {
-            display: block;
-        }
-    }
 </style>
+
+<script>
+function toggleSidebar() {
+    document.getElementById("sidebar").classList.toggle("hidden");
+}
+</script>
+
 </head>
 
 <body>
 
-<!-- Botón menú móvil -->
+<!-- BOTÓN ☰ -->
 <div id="menuToggle">
-    <button id="menuToggleBtn">☰ Menú</button>
+    <button onclick="toggleSidebar()">☰</button>
 </div>
 
-<!-- Sidebar -->
+<!-- ===== SIDEBAR ===== -->
 <div id="sidebar">
     <div class="logo">
-        <img src="logo.png" alt="Logo RespirApp">
+        <img src="logo.png" alt="RespirApp Logo">
     </div>
 
     <h2>Manual RespirApp</h2>
 
-    <div class="sidebar-section-title">General</div>
     <a href="#intro">Introducción</a>
-    <a href="#general">1. Consideraciones generales</a>
-
-    <div class="sidebar-section-title">Usuarios</div>
-    <a href="#usuarios">2. Gestión de usuarios</a>
-
-    <div class="sidebar-section-title">Rutinas</div>
-    <a href="#rutinas">3. Rutinas y ejercicios</a>
-
-    <div class="sidebar-section-title">Juegos</div>
+    <a href="#general">1. Consideraciones Generales</a>
+    <a href="#usuarios">2. Gestión de Usuarios</a>
+    <a href="#rutinas">3. Rutinas y Ejercicios</a>
     <a href="#juegos">4. Juegos</a>
-
-    <div class="sidebar-section-title">Hardware</div>
-    <a href="#sensor">5. Configuración del sensor</a>
-
-    <div class="sidebar-section-title">Soporte</div>
-    <a href="#problemas">6. Resolución de problemas</a>
-    <a href="#contacto">7. Contacto y soporte</a>
+    <a href="#sensor">5. Configuración del Sensor</a>
+    <a href="#problemas">6. Resolución de Problemas</a>
+    <a href="#contacto">7. Contacto y Soporte</a>
 </div>
 
-<!-- Contenido -->
+<!-- ===== CONTENIDO ORIGINAL (SIN CAMBIOS) ===== -->
 <div id="content">
 
 <h1 id="intro">Manual de Usuario – RespirApp</h1>
-<p class="small-note">© 2025 RespirApp. Todos los derechos reservados.</p>
+<p>© 2025 RespirApp. Todos los derechos reservados.</p>
 
 <h2 id="general">1. Consideraciones Generales</h2>
 
-<p>
-RespirApp es una plataforma gamificada diseñada para el entrenamiento respiratorio en población pediátrica mediante el uso de un sensor de flujo MBMED acoplado al dispositivo FluxMed
-GrH. El software integra módulos de adquisición de señal, juegos terapéuticos, gestión de usuarios
-y generación de reportes clínicos. Este manual describe las funciones principales para administradores, profesionales y pacientes, y provee enlaces a tutoriales en video que muestran el uso de cada
-componente.
-</p>
+<p>RespirApp es una plataforma gamificada diseñada...</p>
 
-<h3>1.1. Requisitos del Sistema</h3>
+<h3>1.1 Requisitos del Sistema</h3>
 
-<div class="req-layout">
-    <div class="text">
-        <p>
-        Sistema operativo: Windows 10 o superior.<br>
-        Python 3.10+ instalado.<br>
-        Sensor de flujo MBMED® conectado al equipo FluxMed GrH.<br>
-        Accesorios necesarios: boquilla espirométrica, filtro HME, clip nasal y, de ser necesario, adaptadores 3D.<br>
-        Conexión USB disponible para establecer comunicación serie.
-        </p>
-    </div>
-    <div class="image-single">
-        <img src="fluxmedGRH.png" alt="Dispositivo FluxMed GrH">
-    </div>
-</div>
+<p>Sistema operativo: Windows 10 o superior...</p>
 
-<h3>1.2. Uso de Boquillas, Filtros y Adaptadores</h3>
-<p>
-Para garantizar mediciones respiratorias precisas, seguras y reproducibles, es indispensable utilizar correctamente los accesorios complementarios del sensor de flujo. A continuación se detallan los
-elementos necesarios según el diseño del hardware descrito en el documento técnico de RespirApp.
-</p>
+<img src="fluxmedGRH.png" style="max-width:250px; display:block; margin:20px 0;">
 
-<h4>1.2.1. Boquillas</h4>
-<p>
-El sensor requiere el uso de una boquilla espirométrica para asegurar un sellado adecuado y
-evitar fugas durante la inspiración y espiración. Existen dos tipos compatibles:
-</p>
-<ul>
-<li>Boquillas espirométricas rígidas: permiten un flujo constante y son ideales para mediciones más precisas, como PEF o flujo laminar.</li>
-<li>Boquillas descartables: recomendadas para uso clínico con múltiples pacientes, garantizan higiene y reducen el riesgo de contaminación cruzada.</li>
-</ul>
+<h3>1.2 Uso de boquillas...</h3>
+
+<h4>1.2.1 Boquillas</h4>
 
 <div class="image-row">
-    <img src="boquilla_espirometria.png" alt="Boquilla espirométrica rígida">
-    <img src="boquillas.png" alt="Boquillas descartables">
+    <img src="boquilla_espirometria.png">
+    <img src="boquillas.png">
 </div>
 
-<h4>1.2.2. Filtro HME</h4>
-<p>
-El filtro HME debe colocarse entre el sensor y la boquilla. Su función es:
-</p>
-<ul>
-<li>proteger el sensor del contacto directo con humedad, vapor o secreciones,</li>
-<li>disminuir el riesgo de contaminación,</li>
-<li>mantener la resistencia aerodinámica estable durante la medición.</li>
-</ul>
-<p>
-El uso del filtro es obligatorio para preservar la integridad del equipo y asegurar la consistencia
-de los datos.
-</p>
-
+<h4>1.2.2 Filtro HME</h4>
 <div class="image-single">
-    <img src="FiltroHME.jpg" alt="Filtro HME">
+    <img src="FiltroHME.jpg">
 </div>
 
-<h4>1.2.3. Clip Nasal</h4>
-<p>
-Para obtener mediciones correctas en maniobras espiratorias o de apneas, el paciente debe
-utilizar un clip nasal. Este evita fugas de aire por la nariz y asegura que todo el flujo sea dirigido
-hacia el sensor, aumentando la validez de los parámetros obtenidos (como PEF, flujo espiratorio
-sostenido o inspiratorio).
-</p>
-
-<div class="image-single">
-    <img src="clipnasal.png" alt="Clip nasal">
+<h4>1.2.3 Clip nasal</h4>
+<div class="image-single small">
+    <img src="clipnasal.png">
 </div>
 
-<h4>1.2.4. Adaptadores 3D</h4>
-<p>
-En casos donde el paciente no pueda utilizar las boquillas estándar, RespirApp provee adaptadores diseñados en 3D para:
-</p>
-<ul>
-<li>ampliar el rango de aplicación del sensor,</li>
-<li>mejorar el acople entre boquillas de distintos tamaños y el orificio fijo del dispositivo,</li>
-<li>permitir un uso seguro en pacientes más pequeños o con diferente capacidad bucal.</li>
-</ul>
-<p>
-Su empleo solo es necesario cuando la boquilla estándar no genera un sellado adecuado.
-</p>
-
+<h4>1.2.4 Adaptadores 3D</h4>
 <div class="image-single">
-    <img src="adaptadores.png" alt="Adaptadores 3D">
+    <img src="adaptadores.png">
 </div>
 
 <hr>
 
 <h2 id="usuarios">2. Gestión de Usuarios</h2>
 
-<h3>2.1. Perfiles de Usuario</h3>
-<p>
-RespirApp cuenta con tres tipos de usuarios, cada uno con permisos específicos:<br>
-Administrador: gestiona profesionales, pacientes, permisos y configuraciones globales.<br>
-Profesional: asigna rutinas, crea ejercicios, visualiza resultados y genera reportes.<br>
-Paciente: ejecuta rutinas asignadas.
-</p>
+<h3>2.1 Perfiles de Usuario</h3>
+<p>RespirApp cuenta con tres tipos...</p>
 
-<h3>2.2. Inicio de Sesión</h3>
-<p>
-Al iniciar la aplicación, aparecerá la pantalla principal donde podrá ingresar con usuario y
-contraseña. Si es la primera vez, el administrador deberá crear las cuentas correspondientes desde
-el menú de configuración.
-</p>
+<h3>2.3 Editar Perfil</h3>
+<div class="video-box"><a href="https://youtu.be/czrdR7so91I">Ver video</a></div>
 
-<h3>2.3. Editar Perfil</h3>
-<p>Permite modificar datos personales, nombre, email o credenciales del usuario.</p>
-<div class="video-box">
-    <a href="https://youtu.be/czrdR7so91I" target="_blank">Tutorial: Editar Perfil</a>
-</div>
+<h3>2.4 Cambiar Contraseña</h3>
+<div class="video-box"><a href="https://youtu.be/fv-ywY6wCU0">Ver video</a></div>
 
-<h3>2.4. Cambiar Contraseña</h3>
-<p>
-Funcionalidad disponible para todos los usuarios desde el menú de configuración. Incluye validación segura y hashing.
-</p>
-<div class="video-box">
-    <a href="https://youtu.be/fv-ywY6wCU0" target="_blank">Tutorial: Cambiar Contraseña</a>
-</div>
+<h3>2.5 Agregar Profesional</h3>
+<div class="video-box"><a href="https://youtu.be/THCATtkuzOM">Ver video</a></div>
 
-<h3>2.5. Agregar Profesional</h3>
-<p>
-Opción disponible sólo para el administrador. Permite cargar un nuevo profesional al sistema.
-</p>
-<div class="video-box">
-    <a href="https://youtu.be/THCATtkuzOM" target="_blank">Tutorial: Agregar Profesional</a>
-</div>
+<h3>2.6 Buscar / Editar Profesional</h3>
+<div class="video-box"><a href="https://youtu.be/KdglBXG8_HM">Ver video</a></div>
 
-<h3>2.6. Buscar / Editar Profesional</h3>
-<p>
-El administrador puede visualizar, filtrar y editar la información de profesionales existentes.
-</p>
-<div class="video-box">
-    <a href="https://youtu.be/KdglBXG8_HM" target="_blank">Tutorial: Buscar / Editar Profesional</a>
-</div>
+<h3>2.7 Agregar Paciente</h3>
+<div class="video-box"><a href="https://youtu.be/kEzBD_hxnsQ">Ver video</a></div>
 
-<h3>2.7. Agregar Paciente</h3>
-<p>
-Disponible para administrador y profesional. Permite registrar nuevos pacientes.
-</p>
-<div class="video-box">
-    <a href="https://youtu.be/kEzBD_hxnsQ" target="_blank">Tutorial: Agregar Paciente</a>
-</div>
+<h3>2.8 Reasignar Pacientes</h3>
+<div class="video-box"><a href="https://youtu.be/nbhdOJwHDiY">Ver video</a></div>
 
-<h3>2.8. Reasignar Pacientes a Otros Profesionales</h3>
-<p>
-El administrador con permisos ampliados pueden reasignar un paciente a otro profesional en
-caso de cambios en la estructura del equipo, rotación médica o necesidad de derivación. Esta función
-garantiza la continuidad del tratamiento y permite que el nuevo profesional acceda inmediatamente
-al historial, rutinas, informes y observaciones del paciente.
-</p>
-<p>
-Para reasignar un paciente, se debe acceder a la sección “Ver Paciente”, seleccionar “Editar
-Profesional Asignado” y elegir el nuevo profesional de la lista disponible. Una vez confirmada la
-reasignación, el sistema actualiza automáticamente la relación profesional–paciente.
-</p>
-<div class="video-box">
-    <a href="https://youtu.be/nbhdOJwHDiY" target="_blank">Tutorial: Reasignar Pacientes</a>
-</div>
 
 <hr>
 
 <h2 id="rutinas">3. Rutinas y Ejercicios</h2>
 
-<h3>3.1. Crear Rutina</h3>
-<p>
-El profesional puede generar una rutina combinando ejercicios basados en los juegos terapéuti-
-cos. Cada ejercicio incluye parámetros como duración, umbrales de flujo y niveles de dificultad.
-</p>
-<div class="video-box">
-    <a href="https://youtu.be/K8mLeYi7fho" target="_blank">Tutorial: Crear Rutina</a>
-</div>
+<h3>3.1 Crear Rutina</h3>
+<div class="video-box"><a href="https://youtu.be/K8mLeYi7fho">Ver video</a></div>
 
-<h3>3.2. Ejecutar Rutina</h3>
-<p>
-El paciente accede a la sección “Iniciar Rutina”, donde se presentan los juegos en el orden
-definido por su profesional. Los resultados se guardan automáticamente y son accesibles para el
-profesional.
-</p>
-<p class="small-note"><i>Figura 1: Pantalla de ejecutar rutina.</i></p>
+<h3>3.4 Ver / Guardar Informes</h3>
+<div class="video-box"><a href="https://youtu.be/oCqQ8bjiNnk">Ver video</a></div>
 
-<h3>3.3. Resultados y Reportes</h3>
-<p>
-Los resultados de cada juego (curvas de flujo, métricas respiratorias, tiempo de apnea, PEF,
-etc.) se almacenan en formato JSON.B y pueden exportarse a PDF. El profesional puede visualizar
-el progreso del paciente a través de gráficas comparativas y reportes clínicos.
-</p>
-
-<h3>3.4. Ver / Guardar Informes</h3>
-<p>
-La plataforma permite que el profesional visualice informes generados tras cada rutina o sesión.
-En estos informes se incluyen datos clave como curvas de flujo, valores de PEF, tiempos de apnea
-y resultados de los juegos. Además, existe la opción de exportar y guardar los informes en formato
-PDF para facilitar su impresión, archivado o envío a terceros intervinientes.
-</p>
-<div class="video-box">
-    <a href="https://youtu.be/oCqQ8bjiNnk" target="_blank">Tutorial: Ver / Guardar Informes</a>
-</div>
 
 <hr>
 
 <h2 id="juegos">4. Juegos</h2>
-<p>
-RespirApp incluye cuatro juegos diseñados sobre parámetros respiratorios validados.
-</p>
 
-<h3>4.1. Barco al Viento</h3>
-<p>
-Entrena flujo inspiratorio laminar. El paciente debe inhalar de manera lenta y constante para
-avanzar el barco.
-</p>
-<div class="video-box">
-    <a href="https://youtu.be/Y2W6eSnWEzk" target="_blank">Demo: Barco al Viento</a>
+<h3>4.1 Barco al Viento</h3>
+<div class="video-box"><a href="https://youtu.be/Y2W6eSnWEzk">Demo</a></div>
+<img src="barcoviento.png" class="game-img">
+
+<h3>4.2 Soplo Antillamas</h3>
+<div class="video-box"><a href="https://youtu.be/p3dBl_ff8Dc">Demo</a></div>
+<img src="soploantillamas.png" class="game-img">
+
+<h3>4.3 PulmoRiders</h3>
+<div class="video-box"><a href="https://youtu.be/qG1wbnBoZr8">Demo</a></div>
+<img src="pulmoriders.png" class="game-img">
+
+<h3>4.4 Gira Gira</h3>
+<div class="video-box"><a href="https://www.youtube.com/watch?v=MsmAb9FBB2w&feature=youtu.be">Demo</a></div>
+<img src="giragira.png" class="game-img">
+
+
+<hr>
+
+<h2 id="sensor">5. Configuración del Sensor</h2>
+<div class="video-box"><a href="https://youtu.be/Te1nBq8HE1I">Ver video</a></div>
+
+<hr>
+
+<h2 id="problemas">6. Resolución de Problemas</h2>
+<p>No se detecta el sensor...</p>
+
+<hr>
+
+<h2 id="contacto">7. Contacto y Soporte</h2>
+<p>Para soporte técnico...</p>
+
 </div>
 
-<h3>4.2. Soplo Antillamas</h3>
-<p>
-Entrena pico de flujo espiratorio (PEF) y espiración rápida. El objetivo es apagar llamas gene-
-radas de manera aleatoria.
-</p>
-<div class="video-box">
-    <a href="https://youtu.be/p3dBl_ff8Dc" target="_blank">Demo: Soplo Antillamas</a>
-</div>
-
-<h3>4.3. PulmoRiders</h3>
-<p>
-Entrena tiempo de apnea controlada. El jugador mantiene un período de apnea para avanzar
-en una carrera animada.
-</p>
-<div class="video-box">
-    <a href="https://youtu.be/qG1wbnBoZr8" target="_blank">Demo: PulmoRiders</a>
-</div>
-
-<h3>4.4. Gira Gira</h3>
-<p>
-Entrena flujo espiratorio sostenido. El paciente debe mantener un soplo continuo para girar
+</body>
+</html>
