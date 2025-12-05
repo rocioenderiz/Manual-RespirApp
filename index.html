@@ -244,7 +244,7 @@
 
 <!-- Botón menú móvil -->
 <div id="menuToggle">
-    <button id="menuToggleBtn">☰ Menú</button>
+    <button id="menuToggleBtn">☰</button>
 </div>
 
 <!-- Sidebar -->
@@ -469,6 +469,7 @@ definido por su profesional. Los resultados se guardan automáticamente y son ac
 profesional.
 </p>
 <p class="small-note"><i>Figura 1: Pantalla de ejecutar rutina.</i></p>
+<img src="main_pat.png" class="image-single" style="max-width:300px; display:block; margin:20px auto;">
 
 <h3>3.3. Resultados y Reportes</h3>
 <p>
@@ -525,3 +526,31 @@ en una carrera animada.
 <h3>4.4. Gira Gira</h3>
 <p>
 Entrena flujo espiratorio sostenido. El paciente debe mantener un soplo continuo para girar
+</p>
+<div class="video-box">
+    <a href="https://youtu.be/MsmAb9FBB2w" target="_blank">Demo: GiraGira</a>
+</div>
+
+<hr>
+
+<h2 id="sensor">5. Configuración del Sensor</h2>
+<p>
+El sensor debe conectarse vía USB antes de iniciar una rutina.  
+El sistema detectará automáticamente el puerto y comenzará a recibir datos de flujo sin necesidad de calibración adicional.
+</p>
+
+<div class="image-single">
+    <img src="calibracion.png" alt="Calibración del sensor">
+</div>
+
+
+</div> <!-- cierre de #content -->
+
+<script>
+document.getElementById("menuToggleBtn").addEventListener("click", function() {
+    document.getElementById("sidebar").classList.toggle("open");
+});
+</script>
+
+</body>
+</html>
